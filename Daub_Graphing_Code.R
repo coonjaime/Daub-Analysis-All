@@ -81,14 +81,15 @@ Veg_Raw           = read_csv("Veg_Raw_Data.csv")
 #.....................................................................----
 #__3a.By Site####
 
-Veg_Pasture_Filtered=Veg_Pasture%>%
+Veg_Pasture_Filtered=Veg_Pastureh%>%
   filter(!pasture=="KELL")%>%
   filter(!pasture=="NA")%>%
   filter(!pasture=="RIE")%>%
   filter(!pasture=="RNR")%>%
   mutate(pasture=recode(pasture,
                         "RCH2007"="RCH",
-                        "RCH2014"="RCH"))
+                        "RCH2014"="RCH"))%>%
+  filter(pasture %in% c("KLN","LTR","PYN"))
   
   
 #Bar graph
